@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang ="en" dir="ltr">
+
+	<head>
+		
+		<title>CalculatorImage: Equation Online Calculator</title>
+		
+		<meta name="keywords" content="Equation calculator, Image, Word, LaTex, png, CalculatorImage, Online calculator,equation,equation generator, equation to image, instant calculators, mathematical symbols, math, calculus, online, generate equation"/>
+		<meta name="description" content="CalculatorImage is a web application line calculator to generate images. CalculatorImage convert equations, calculations, mathematical symbols into images. 
+Images can be dragged to text editors like word and libre office"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta charset="UTF-8"/>
+		<meta name="google-site-verification" content="CixF1PCXLgqCHZgSIoPXp102V1bARTC3BAK_pe90TAE" />
+		
+		<link rel="alternate" href="https://calculatorimage.com/" hreflang="en-us" />
+		<link rel="alternate" href="https://calculatorimage.com/" hreflang="x-default" />
+	    <link rel="stylesheet" type="text/css" href="CSS.css"/>
+	    
+		<script type="text/javascript"src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176083055-1"></script>
+        
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'UA-176083055-1');
+        </script>
+        
+        
+        <!-- Marcação JSON-LD gerada pelo Assistente de marcação para dados estruturados do Google. -->
+        <script type="application/ld+json">
+        [ {
+          "@context" : "http://schema.org",
+          "@type" : "Dataset",
+          "description" : "CalculatorImage is a free online calculator to generate images (png) of mathematical equations. The images can be used anywhere (word, excel, libreoffice, latex)."
+        }, {
+          "@context" : "http://schema.org",
+          "@type" : "Dataset",
+          "name" : "HOW TO USE",
+          "description" : "Example 1 x^{y} = 3^{27} = Example 2 \\frac{\\sqrt[y]{x}}{y} = \\frac{\\sqrt[]{4}}{2} = Example 3 x_{1,2}=\\frac{-b\\pm\\sqrt\\Delta}{2a},%20\\\\%20\\%20\\",
+          "distribution" : {
+            "@type" : "DataDownload",
+            "contentUrl" : "https://calculatorimage.com/#"
+          }
+        }, {
+          "@context" : "http://schema.org",
+          "@type" : "Dataset",
+          "name" : "Change the value between \"{ }\"",
+          "description" : "Example 1 x^{y} = 3^{27} = Example 2 \\frac{\\sqrt[y]{x}}{y} = \\frac{\\sqrt[]{4}}{2} = Example 3 x_{1,2}=\\frac{-b\\pm\\sqrt\\Delta}{2a},%20\\\\%20\\%20\\",
+          "distribution" : {
+            "@type" : "DataDownload",
+            "contentUrl" : "https://calculatorimage.com/#"
+          }
+        } ]
+        </script>
+        
+        
+        
+	</head>
+	
+	<body>
+		<div id="menu"> <img src="image/calculatorImage.svg"  class = "tagCenter" style="width: auto; height: 60%"> <img/> </div>
+		<p align="center" style="font-family: 'calibri'; margin-bottom: 20px; font-size: 20px; color: #008000"> <b>CalculatorImage is a free online calculator to generate images (png) of mathematical equations.<br/>The images can be used anywhere (word, excel, libreoffice, latex).</b> </p>
+		<div id="calculator">
+			
+			<div id="config" >
+				<img src = "image/engrenagem.svg" id="engrenagem" onclick = "displayMenu()"/> 
+				<div id= "menuConfig">
+					<label style = "font-family: Helvética">Fonte color</label> 
+					<input id= "inputMenu1" class ="inputMenu" placeholder="#FFFFFF" maxlength="7" onclick="clickInputMenu()" onblur="blurInputMenu()" onchange= "setValueMenu(value,1)"/><br>
+					<label>Background color</label> 
+					<input id= "inputMenu2" class = "inputMenu" placeholder="#000000" maxlength="7" onclick="clickInputMenu()" onblur="blurInputMenu()" onchange= "setValueMenu(value,2)"/> 
+				</div>
+			</div>
+			
+			<div id="viewport">
+				<img src= "image/loading.gif" id="imageLoad"/>
+				<img src="https://chart.googleapis.com/chart?cht=tx&chl=\qquad" id="image"  onload="loadImage()"/>
+			</div>
+			<button id="buttonDownload" onclick> <a download="custom-filename.jpg" href="#" id="linkDownload"onclick="clickDownload()">DOWNLOAD</a> </button>
+				
+			<textarea  onblur= "blurSelect()"  oninput="updateEquation()" id="textarea"></textarea></br>
+			<div id="buttonCalculator">
+				<button  onclick = "click_B(value)" value="x^{y}" style = "font-size: 11px"> x<sup>y</sup></button><button onclick = "click_B(value)" value="{">{</button><button onclick = "click_B(value)" value="}">}</button><button onclick = "click_B(value)" value="{&#37}"> &#37; </button><button onclick = "click_B(value)" value="AC">AC</button></br>
+				<button  onclick = "click_B(value)" value="\sqrt[y]{x}">&radic;</button><button onclick = "click_B(value)" value="7">7</button><button onclick = "click_B(value)" value="8">8</button><button onclick = "click_B(value)" value="9">9</button><button onclick = "click_B(value)" value="+">+</button></br>
+				<button  onclick = "click_B(value)" value="\frac{x}{y}" >x/y</button><button onclick = "click_B(value)" value="4">4</button><button onclick = "click_B(value)" value="5">5</button><button onclick = "click_B(value)" value="6">6</button><button onclick = "click_B(value)" value="-">-</button></br>
+				<button  onclick = "click_B(value)" value="\log_{y}{x}">log</button><button onclick = "click_B(value)" value="1">1</button><button onclick = "click_B(value)" value="2">2</button><button onclick = "click_B(value)" value="3">3</button><button onclick = "click_B(value)" value="{\cdot}">&times;</button></br>
+				<button  onclick = "click_B(value)" value="\pi">&pi;</button><button onclick = "click_B(value)" value="0">0</button><button onclick = "click_B(value)" value=".">.</button><button onclick = "click_B(value)" value="=">=</button><button onclick = "click_B(value)" value="{\div}">&divide;</button>
+			
+			</div>
+			
+		</div>
+		
+		<div align="center" style="margin: 35px 0; width: 160px; height: auto;" class="tagCenter"><a href= "#examples" class="howtouse" id="howtouse" onclick="scrollByRate(2000,20)"><b>HOW TO USE</b></a></div>
+	
+		<div id="examples">
+			
+			<h3 align="center" style="padding: 20px;">Change the value between "{ }"</h3>	
+			<ul style="position: relative; left: 50px;">
+			  <li><b>Example 1</b></li>  
+				x^{y} = <img src="image/example1.png"/> <br/>
+				3^{27} = <img src="image/example1.1.png"/><br/><br/>
+				<hr style="width:85%">
+			  <li><b>Example 2</b></li>	
+				\frac{\sqrt[y]{x}}{y} = <img src="image/example2.png" style="position: absolute;"/> <br/> <br/> <br/>
+				\frac{\sqrt[]{4}}{2} = <img src="image/example2.2.png" style="position: absolute;"/> <br/> <br/> <br/x'>
+				<hr style="width:85%">
+			  <li><b>Example 3</b></li>
+				x_{1,2}=\frac{-b\pm\sqrt\Delta}{2a},%20\\%20\%20\
+				<br/><br/>
+				<img src="image/example3.png"/>			  
+			</ul> 	
+		</div>	
+		
+		<div  id="footer">
+			<p class="tagCenter"align="center"></p>
+		</div>
+		
+	</body>
+	
+	<script>	
+	
+		/*Variables*/
+		
+		var textarea =document.getElementById("textarea")
+		var image = document.getElementById('image');
+		var menu = document.getElementById('menuConfig');
+		var gifLoad = document.getElementById('imageLoad');
+		var download = document.getElementById('linkDownload');
+		var blurInputM = true;
+		var start;
+		var end;
+		var fonteColor = "000000";
+		var backgroundColor = "FFFFFF";
+		var result;
+		
+		/*Func*/
+
+		$(document).ready(function(){
+		  $("a").on('click', function(event) {
+
+			if (this.hash !== "") {
+			  event.preventDefault();
+
+			  var hash = this.hash;
+
+			  $('html, body').animate({
+				scrollTop: $(hash).offset().top
+			  }, 700, function(){
+
+				window.location.hash = hash;
+			  });
+			} 
+		  });
+		});
+
+		document.onkeypress = function(evt){
+			if(blurInputM){
+				textarea.focus();
+			}
+		}
+		
+		function updateEquation(){
+			gifLoad.style.display = 'block';
+			image.style.display = 'none';
+			var message ="https://chart.googleapis.com/chart?cht=tx&chco="+fonteColor+"&chf=bg,s,"+backgroundColor+"&chs=tx&chl=" +"{\\qquad}"+ textarea.value;
+			result = message.replace(/ /g,"\\qquad ").replace(/\n/g,"\\\\").replace(/\+/g,"{%2B}");
+			image.src = result;
+		}
+
+		function displayMenu(){
+			
+			if(menu.style.display == "none" || menu.style.display == "")
+				menu.style.display = 'block';
+			else
+				menu.style.display = 'none';
+		}
+		
+		function loadImage(){
+			gifLoad.style.display = 'none';
+			image.style.display = 'block';
+		}
+		
+		function blurSelect(){
+			start = textarea.selectionStart;
+			end = textarea.selectionEnd;
+			
+		}
+		function blurInputMenu(){
+			blurInputM= true;
+		}
+		
+		function clickInputMenu(){
+			blurInputM= false;
+		}
+		
+		function clickDownload(){
+			if(textarea.value != '')
+				download.href = result;
+		}
+
+		function click_B(values){
+	
+			switch(values){
+				case "AC":
+					textarea.value = '';
+					break;
+				default:
+					textarea.setRangeText(values, start, end);
+					start+=values.length;
+					end = start;
+					break;
+					
+			}
+			updateEquation();
+			
+		}
+		
+		function setValueMenu(value, input){
+			value = value.replace(/#/g,'');
+			switch(input){
+				case 1:
+					fonteColor = value;
+					break;
+				case 2:
+					backgroundColor = value;
+					break;
+				default:
+					break;
+			}
+			updateEquation();
+		}
+		
+	</script>
+	
+</html>
